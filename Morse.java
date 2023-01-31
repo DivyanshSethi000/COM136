@@ -17,20 +17,13 @@ public class Morse {
         // WHILE i < length of string msg
       while (i < msg.length()){
         //   get char in msg at position i
-        char c1 = msg.charAt(i);
-        char c2 = msg.charAt(msg.length()-1);
-        //   encode char into morseCode string (call charToMorseCode)
-        String morsed = charToMorseCode(c1);
-        //   add morseCode to morse string
-        //   add a space (as long as we are not at last char in message)
-        if (c1 == c2) {
-        morse = morse + morsed;
-        } else {
-          morse = morse + morsed + " ";
+        char c = msg.charAt(i);
+        morse = morse + charToMorseCode(c);
+            if((i != (msg.length() - 1))){  // the last character, to prevent another space
+                morse = morse + " ";
+            }
+            i = i + 1;
         }
-        //   i = i + 1
-        i = i + 1;
-      }
         
         return morse; // return the morse string version of the message
     }
@@ -49,27 +42,15 @@ public class Morse {
         
         // complete this method - see presentation
         // WHILE tokenizer has more tokens
-      while (tokenizer.hasMoreTokens()){
+      while (tokenizer.hasMoreTokens() == true){
+        String token = tokenizer.nextToken();
         //   Get token from tokenizer (each token is a morseCode String repesenting a char of the message) 
-        System.out.println(tokenizer.nextToken());
         //   Decode the morseCode string by calling charFromMorseCode and add char to msg
-        int i = 0;
-        char c1 = morse.charAt(i);
-        char c2 = morse.charAt(msg.length()-1);
+        msg = msg + charFromMorseCode(token);
         
-        char decoded = charFromMorseCode(morse);
-        if (c1 == c2) {
-          msg = msg + decoded;
-        } else {
-          msg = msg + decoded + " ";
-        }
-        //   i = i + 1
-        i = i + 1;
       }
-        return msg; // return decoded message
+      return msg;// return decoded message
     }
-
-
     // ============================  DONT EDIT BELOW THIS LINE ==========================
 
     // ===================== Encode and Decode Character to/from morse code =============

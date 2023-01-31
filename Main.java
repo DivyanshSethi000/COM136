@@ -28,9 +28,15 @@ public class Main {
     public static void question2() {
         // Create an interactive program that calls the methods in the morse class to prove they work
        // Morse.messageToMorse("the quick brown") and Morse.messageFromMorse("._ / ....") to prove they work
-      Morse.messageToMorse("the quick brown");
-      Morse.messageFromMorse("._ / ....");
-
+      System.out.println();  // separating line
+        String morseCodeTest = Morse.messageToMorse("the quick brown");
+        System.out.println(morseCodeTest + "\n\n" + Morse.messageFromMorse(morseCodeTest));
+        System.out.println();
+        System.out.println(Morse.messageFromMorse("._ / ...."));
+        
+        String userMessage = Console.getString("\nPlease enter a message: ");
+        String morseCode = Morse.messageToMorse(userMessage);
+        String decodedMessage = Morse.messageFromMorse(morseCode);
     }
 
 
